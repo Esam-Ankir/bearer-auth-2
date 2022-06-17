@@ -6,8 +6,8 @@ module.exports = async (req, res, next) => {
   try {
     if (!req.headers.authorization) { next('Invalid Login') }
     const token = req.headers.authorization.split(' ').pop();
-    const validUser = await users.authenticateToken(token).then(async(x)=>{
-      req.user = x;
+    const validUser = await users.authenticateToken(token).then(async(authUser)=>{
+      req.user = authUser;
       next();
     })
     .catch((e)=>{

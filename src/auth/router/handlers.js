@@ -36,7 +36,7 @@ async function handleSignin(req, res, next) {
 async function handleGetUsers(req, res, next) {
   try {
     let come=req.user;
-    res.status(200).json(req.user);
+    res.status(201).json(req.user);
   } catch (e) {
     console.error(e);
     next(e);
