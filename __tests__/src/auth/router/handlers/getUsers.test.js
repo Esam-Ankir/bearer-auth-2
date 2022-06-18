@@ -1,11 +1,7 @@
 'use strict';
 process.env.SECRET = "TEST_SECRET";
-const {
-  db,
-} = require('../../../../../src/auth/models');
-const {
-  handleGetUsers
-} = require('../../../../../src/auth/router/handlers.js');
+const {db} = require('../../../../../src/auth/models');
+const {handleGetUsers} = require('../../../../../src/auth/router/handlers.js');
 beforeAll(async () => {
   await db.sync();
 });
@@ -23,7 +19,7 @@ describe('Router handler for getUsers', () => {
   test('Should fetch users and send user objects in the response', async () => {
     let req = {};
     await handleGetUsers(req, res, next);
-    expect(res.status).toHaveBeenCalledWith(200);
+    expect(res.status).toHaveBeenCalledWith(201);
     expect(res.json).toEqual(expect.anything());
   });
 

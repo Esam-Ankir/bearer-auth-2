@@ -12,7 +12,6 @@ let userInfo = {
     password: 'password'
   },
 };
-console.log('ssssssssssssssssssssssss', users);
 beforeAll(async () => {
   await db.sync();
   await users.create(userInfo.admin);
@@ -21,8 +20,7 @@ afterAll(async () => {
   await db.drop();
 });
 describe('Auth Middleware', () => {
-  // Mock the express req/res/next that we need for each middleware call
-  const req = {};
+    const req = {};
   const res = {
     status: jest.fn(() => res),
     send: jest.fn(() => res)
@@ -31,7 +29,6 @@ describe('Auth Middleware', () => {
   describe('user authentication', () => {
     it('fails a login for a user (admin) with the incorrect basic credentials', () => {
       const basicAuthString = base64.encode('username:password');
-      // Change the request to match this test case
       req.headers = {
         authorization: `Basic ${basicAuthString}`,
       };
@@ -44,7 +41,6 @@ describe('Auth Middleware', () => {
 
     it('logs in an admin user with the right credentials', () => {
       let basicAuthString = base64.encode(`${userInfo.admin.username}:${userInfo.admin.password}`);
-      // Change the request to match this test case
       req.headers = {
         authorization: `Basic ${basicAuthString}`,
       };

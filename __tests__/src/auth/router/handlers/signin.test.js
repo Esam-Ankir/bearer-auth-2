@@ -42,6 +42,19 @@ describe('Testing the signin handler', () => {
       })
     );
   });
+//   await handleSignin(req, res, next);
+//   expect(res.status).toHaveBeenCalledWith(200);
+//   expect(res.json).toHaveBeenCalledWith(
+//     expect.objectContaining({
+//       user: expect.objectContaining({
+//         username: expect.any(String),
+//         password: expect.any(String),
+//         token: expect.any(String),
+//       }),
+//       token: expect.any(String),
+//     })
+//   );
+// });
 
   test('Should trigger error handler when no user is present on the request', async () => {
     let req = {};
